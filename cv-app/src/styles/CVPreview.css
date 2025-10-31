@@ -1,0 +1,68 @@
+#preview-section {
+  position: absolute;
+  right: 0px;
+  width: 491px;
+  height: 100vh;
+  background-color: #c6d7fa;
+}
+
+#preview-A4 {
+  position: relative;
+  top: 50px;
+  left: calc((491px / 2) - (408px / 2));
+  padding: 15px;
+  width: 408px;
+  height: 597px;
+  background-color: white;
+}
+
+#preview-A4,
+#h6-section {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#h6-section {
+  position: relative;
+  top: 20px;
+}
+
+#viewTemplateBtn {
+  position: absolute;
+  bottom: 50px;
+  width: 150px;
+  left: calc(491px / 2 - 75px);
+  border: none;
+  color: #4f246a;
+  background-color: #c6d7fa;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#first-name-surname-A4 {
+  position: relative;
+  color: #00158c;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+#phone-number-email-A4 {
+  position: relative;
+  color: #000000;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.separator-A4 {
+  width: 345px;
+  height: 1px;
+  background-color: #00158c;
+}
+
+.h6-info {
+  color: #00158c;
+  font-weight: bold;
+  font-size: 12px;
+}

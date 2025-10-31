@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import "./styles/CVPreview.css";
+import "./styles/Header.css";
+import "./styles/Form.css";
+import "./styles/Buttons.css";
+import "./components/Header.jsx";
+import Header from "./components/Header.jsx";
+import Form from "./components/Form.jsx";
+import Buttons from "./components/Buttons.jsx";
+import CVPreview from "./components/CVPreview.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const pages = [
+    "contact",
+    "experience",
+    "roleDescription",
+    "workHistory",
+    "education",
+    "reviewEducation",
+    "skills",
+    "summary",
+  ];
+  const [pageIndex, setPageIndex] = useState(0);
+  const [page, setPage] = useState(pages[0]);
   return (
-    <>
+    <div className="App">
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Header page={page} />
+        <Form />
+        <Buttons
+          pageIndex={pageIndex}
+          pages={pages}
+          setPage={setPage}
+          setPageIndex={setPageIndex}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <CVPreview />
+    </div>
+  );
 }
 
-export default App
+export default App;

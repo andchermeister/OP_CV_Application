@@ -1,0 +1,22 @@
+header {
+  padding: 20px;
+}
+
+#h1-header {
+  width: 860px;
+  font-weight: 900;
+  font-size: 45px;
+  color: 000000;
+}
+
+#h2-sub-header {
+  margin-top: 10px;
+  width: 820px;
+  font-weight: 400px;
+  font-size: 20px;
+  color: #4f4f4f;
+}
+
+.highlight {
+  color: #2b72ff;
+}
