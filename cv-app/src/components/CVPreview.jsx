@@ -1,10 +1,17 @@
-function CVPreview() {
+function CVPreview({ formData }) {
   return (
     <section id="preview-section">
       <div id="preview-A4">
-        <h1 id="first-name-surname-A4">FIRST NAME SURNAME</h1>
+        <h1 id="first-name-surname-A4">
+          {formData.firstName || "FIRST NAME"} {formData.surname || "SURNAME"}
+        </h1>
         <div className="separator-A4"></div>
-        <div id="phone-number-email-A4">Phone | Email Address</div>
+        <div id="phone-number-email-A4">
+          {formData.city || "City"}
+          {formData.countyRegion || ""}
+          {formData.postCode || ""} | {formData.phone || "Phone"} |{" "}
+          {formData.email || "Email Address"}
+        </div>
         <div id="h6-section">
           <h6 id="summary-A4" className="h6-info">
             Summary

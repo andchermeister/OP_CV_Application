@@ -21,13 +21,24 @@ function App() {
     "skills",
     "summary",
   ];
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    surname: "",
+    city: "",
+    countyRegion: "",
+    postCode: "",
+    phone: "",
+    email: "",
+  });
+
   const [pageIndex, setPageIndex] = useState(0);
   const [page, setPage] = useState(pages[0]);
   return (
     <div className="App">
       <div>
         <Header page={page} />
-        <Form />
+        <Form setFormData={setFormData} />
         <Buttons
           pageIndex={pageIndex}
           pages={pages}
@@ -35,7 +46,7 @@ function App() {
           setPageIndex={setPageIndex}
         />
       </div>
-      <CVPreview />
+      <CVPreview formData={formData} />
     </div>
   );
 }
