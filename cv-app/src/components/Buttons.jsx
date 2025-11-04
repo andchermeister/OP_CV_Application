@@ -19,7 +19,16 @@ function Buttons({ pageIndex, pages, setPage, setPageIndex }) {
         </button>
       )}
       {pageIndex !== pages.length - 1 && (
-        <button onClick={next} id="conitnue-btn">
+        <button
+          onClick={next}
+          id="conitnue-btn"
+          style={{
+            left:
+              pageIndex === 0
+                ? "calc((100vw - 491px - 150px) / 2)"
+                : "calc((100vw - 491px - 150px) * 0.75)",
+          }}
+        >
           Continue
         </button>
       )}

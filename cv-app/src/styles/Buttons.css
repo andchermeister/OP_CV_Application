@@ -1,12 +1,21 @@
-#conitnue-btn {
+#conitnue-btn,
+#back-btn {
   position: absolute;
   width: 150px;
   height: 58px;
   font-size: 20px;
   font-weight: 600;
+  border-radius: 30px;
+  bottom: 50px;
+}
+
+#conitnue-btn {
   border: none;
   background-color: #c6d7fa;
-  border-radius: 30px;
-  left: calc((100vw - 491px - 150px) / 2);
-  bottom: 50px;
+  left: calc((100vw - 491px - 150px) * 0.75);
+}
+
+#back-btn {
+  background-color: white;
+  left: calc((100vw - 491px - 150px) * 0.25);
 }

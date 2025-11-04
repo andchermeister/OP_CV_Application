@@ -34,7 +34,7 @@ function Header({ page }) {
   const titleNSubTitle = getTitleNSubTitle();
   const isArray = Array.isArray(titleNSubTitle);
 
-  const keywords = ["contact", "information"];
+  const keywords = ["contact", "information", "experience"];
 
   const renderTitle = (title) => {
     return title.split(" ").map((word, idx) =>

@@ -1,4 +1,4 @@
-function Form({ setFormData }) {
+function ContactForm({ setFormData }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -8,7 +8,7 @@ function Form({ setFormData }) {
   };
   return (
     <>
-      <form action="" id="contact-form">
+      <form id="contact-form">
         <div id="first-name-and-surname">
           <div className="contact-form">
             <label htmlFor="firstName">First name</label>
@@ -90,4 +90,4 @@ function Form({ setFormData }) {
   );
 }
 
-export default Form;
+export default ContactForm;

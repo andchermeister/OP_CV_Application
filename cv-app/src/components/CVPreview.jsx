@@ -7,9 +7,9 @@ function CVPreview({ formData }) {
         </h1>
         <div className="separator-A4"></div>
         <div id="phone-number-email-A4">
-          {formData.city || "City"}
-          {formData.countyRegion || ""}
-          {formData.postCode || ""} | {formData.phone || "Phone"} |{" "}
+          {formData.city + " " || "City"}
+          {formData.countyRegion + " " || ""}
+          {formData.postCode + " " || ""} | {formData.phone || "Phone"} |{" "}
           {formData.email || "Email Address"}
         </div>
         <div id="h6-section">
@@ -21,6 +21,21 @@ function CVPreview({ formData }) {
             Experience
           </h6>
           <div className="separator-A4"></div>
+          <div>
+            {formData.jobTitle && <div>{formData.jobTitle}</div>}
+            {formData.empoyer && <div>{formData.empoyer}</div>}
+          </div>
+          <div>
+            {formData.startDate && (
+              <div>
+                {formData.endDate
+                  ? formData.startDate + " to " + formData.endDate
+                  : formData.startDate + " to current"}
+              </div>
+            )}
+            {formData.cityOfWork ? formData.cityOfWork : ""}
+            {formData.countyOfWork ? ", " + formData.countyOfWork : ""}
+          </div>
           <h6 id="skills-A4" className="h6-info">
             Skills
           </h6>

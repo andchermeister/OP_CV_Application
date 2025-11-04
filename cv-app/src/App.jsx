@@ -2,11 +2,13 @@ import { useState } from "react";
 import "./App.css";
 import "./styles/CVPreview.css";
 import "./styles/Header.css";
-import "./styles/Form.css";
+import "./styles/forms/ContactForm.css";
+import "./styles/forms/ExperienceForm.css";
 import "./styles/Buttons.css";
 import "./components/Header.jsx";
 import Header from "./components/Header.jsx";
-import Form from "./components/Form.jsx";
+import ContactForm from "./components/forms/ContactForm.jsx";
+import ExperienceForm from "./components/forms/ExperienceForm.jsx";
 import Buttons from "./components/Buttons.jsx";
 import CVPreview from "./components/CVPreview.jsx";
 
@@ -30,6 +32,12 @@ function App() {
     postCode: "",
     phone: "",
     email: "",
+    jobTitle: "",
+    empoyer: "",
+    startDate: "",
+    endDate: "",
+    cityOfWork: "",
+    countyOfWork: "",
   });
 
   const [pageIndex, setPageIndex] = useState(0);
@@ -38,7 +46,8 @@ function App() {
     <div className="App">
       <div>
         <Header page={page} />
-        <Form setFormData={setFormData} />
+        {page === "contact" && <ContactForm setFormData={setFormData} />}
+        {page === "experience" && <ExperienceForm setFormData={setFormData} />}
         <Buttons
           pageIndex={pageIndex}
           pages={pages}
