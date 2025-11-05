@@ -1,0 +1,24 @@
+#RoleDescriptionForm {
+  position: relative;
+  gap: 20px;
+  left: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#upperTextBox {
+  width: 887px;
+  height: 120px;
+  border: 1px solid #4f4f4f;
+  border-radius: 10px;
+}
+
+#lowerTextBox {
+  width: 887px;
+  height: 320px;
+  border: 1px solid #4f4f4f;
+  border-radius: 10px;
+}

@@ -25,16 +25,16 @@
   gap: 106px;
 }
 
-input {
+#contact-form input {
   position: relative;
   margin-top: 10px;
   width: 350px;
   height: 40px;
-  color: #5d5c5c;
+  color: #868585;
   font-size: 20px;
   padding-left: 5px;
 }
 
-#city {
+#contact-form #city {
   width: 806px;
 }

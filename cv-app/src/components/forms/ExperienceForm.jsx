@@ -8,7 +8,7 @@ function ExperienceForm({ setFormData }) {
   };
   return (
     <>
-      <form id="contact-form">
+      <form id="experience-form">
         <div id="job-title-and-empoyer">
           <div className="experience-form">
             <label htmlFor="jobTitle">Job title</label>
@@ -53,9 +53,9 @@ function ExperienceForm({ setFormData }) {
             />
           </div>
         </div>
-        <div className="experience-form">
-          <label htmlFor="currentlyWork">I currently work here </label>
+        <div id="checkboxDiv" className="experience-form">
           <input type="checkbox" name="currentCheckbox" id="currentCheckbox" />
+          <label htmlFor="currentCheckbox">I currently work here </label>
         </div>
         <div id="city-and-county">
           <div className="experience-form">

@@ -1,4 +1,4 @@
-function Buttons({ pageIndex, pages, setPage, setPageIndex }) {
+function Buttons({ pageIndex, page, pages, setPage, setPageIndex }) {
   const previous = () => {
     if (pageIndex > 0) {
       setPageIndex(pageIndex - 1);
@@ -29,7 +29,7 @@ function Buttons({ pageIndex, pages, setPage, setPageIndex }) {
                 : "calc((100vw - 491px - 150px) * 0.75)",
           }}
         >
-          Continue
+          {page === "experience" ? "Add details" : "Continue"}
         </button>
       )}
     </div>

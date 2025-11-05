@@ -1,0 +1,50 @@
+#experience-form {
+  position: relative;
+  gap: 20px;
+  margin-top: 50px;
+  max-width: 806px;
+  left: calc((100vw - 491px - 806px) / 2);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.experience-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#job-title-and-empoyer,
+#start-date-and-end-date,
+#city-and-county {
+  display: flex;
+  flex-direction: row;
+  gap: 106px;
+}
+
+#checkboxDiv {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  left: calc((100vw - 491px - 806px) * 1);
+}
+
+#experience-form #currentCheckbox {
+  width: 30px;
+  transform: translateY(-10%);
+}
+
+#experience-form input {
+  position: relative;
+  margin-top: 10px;
+  width: 350px;
+  height: 40px;
+  color: #868585;
+  font-size: 20px;
+  padding-left: 5px;
+}

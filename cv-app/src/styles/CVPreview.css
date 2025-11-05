@@ -66,3 +66,8 @@
   font-weight: bold;
   font-size: 12px;
 }
+
+#experience-section {
+  display: flex;
+  gap: 50px;
+}
