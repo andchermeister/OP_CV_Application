@@ -17,15 +17,11 @@ function Header({ page, formData }) {
             formData.jobTitle || `"your job title"`
           }`,
         ];
-      case "workHistory":
-        return ["Review your work history"];
       case "education":
         return [
           "Add your education",
-          "Tell us about any colleges, voactional programs, or a training courses you took. Even if you didn't finish, it's important to list them",
+          "Tell us about any colleges, voactional programs, or a training courses you took. Even if you didn't finish, it's important to list them.",
         ];
-      case "reviewEducation":
-        return ["Review your education"];
       case "skills":
         return ["Add your skills"];
       case "summary":
@@ -43,6 +39,7 @@ function Header({ page, formData }) {
     "information",
     "experience",
     formData.jobTitle || "job title",
+    "education",
   ];
 
   const renderTitle = (title) => {

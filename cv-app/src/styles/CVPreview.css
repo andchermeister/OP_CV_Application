@@ -53,6 +53,7 @@
   color: #000000;
   font-weight: 400;
   font-size: 12px;
+  max-width: 320px;
 }
 
 .separator-A4 {
@@ -69,5 +70,18 @@
 
 #experience-section {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 320px;
+}
+
+#upper-exp-section {
+  display: flex;
   gap: 50px;
+  flex-direction: row;
+}
+
+li {
+  font-size: 12px;
 }

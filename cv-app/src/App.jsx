@@ -5,26 +5,27 @@ import "./styles/Header.css";
 import "./styles/forms/ContactForm.css";
 import "./styles/forms/ExperienceForm.css";
 import "./styles/forms/RoleDescriptionForm.css";
+import "./styles/forms/EducationForm.css";
 import "./styles/Buttons.css";
 import "./components/Header.jsx";
 import Header from "./components/Header.jsx";
 import ContactForm from "./components/forms/ContactForm.jsx";
 import ExperienceForm from "./components/forms/ExperienceForm.jsx";
 import RoleDescriptionForm from "./components/forms/RoleDescriptionForm.jsx";
+import EducationForm from "./components/forms/EducationForm.jsx";
 import Buttons from "./components/Buttons.jsx";
 import CVPreview from "./components/CVPreview.jsx";
 
 function App() {
   const contactFormRef = useRef(null);
   const experienceFormRef = useRef(null);
+  const educationFormRef = useRef(null);
 
   const pages = [
     "contact",
     "experience",
     "roleDescription",
-    "workHistory",
     "education",
-    "reviewEducation",
     "skills",
     "summary",
   ];
@@ -44,6 +45,16 @@ function App() {
     currentCheckbox: false,
     cityOfWork: "",
     countyOfWork: "",
+    bulletPoints: [""],
+    institution: "",
+    cityOfInstitution: "",
+    fieldOfStudy: "",
+    qualification: "High School Diploma",
+    startYear: "",
+    graduationYear: "",
+    eduCheckBox: false,
+    grade: "",
+    honours: "",
   });
 
   const [pageIndex, setPageIndex] = useState(0);
@@ -72,6 +83,15 @@ function App() {
             pages={pages}
             setPage={setPage}
             setPageIndex={setPageIndex}
+            formData={formData}
+            setFormData={setFormData}
+          />
+        )}
+        {page === "education" && (
+          <EducationForm
+            educationFormRef={educationFormRef}
+            formData={formData}
+            setFormData={setFormData}
           />
         )}
         <Buttons
@@ -82,6 +102,7 @@ function App() {
           setPageIndex={setPageIndex}
           contactFormRef={contactFormRef}
           experienceFormRef={experienceFormRef}
+          educationFormRef={educationFormRef}
         />
       </div>
       <CVPreview formData={formData} />

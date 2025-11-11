@@ -6,6 +6,7 @@ function Buttons({
   setPageIndex,
   contactFormRef,
   experienceFormRef,
+  educationFormRef,
 }) {
   const previous = () => {
     if (pageIndex > 0) {
@@ -20,6 +21,8 @@ function Buttons({
       canContinue = contactFormRef.current.submit();
     } else if (page === "experience" && experienceFormRef.current?.submit) {
       canContinue = experienceFormRef.current.submit();
+    } else if (page === "education" && educationFormRef.current?.submit) {
+      canContinue = educationFormRef.current.submit();
     }
     if (!canContinue) return;
 

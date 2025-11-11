@@ -22,20 +22,30 @@ function CVPreview({ formData }) {
           </h6>
           <div className="separator-A4"></div>
           <div id="experience-section">
-            <div>
-              {formData.jobTitle && <div>{formData.jobTitle}</div>}
-              {formData.employer && <div>{formData.employer}</div>}
+            <div id="upper-exp-section">
+              <div>
+                {formData.jobTitle && <div>{formData.jobTitle}</div>}
+                {formData.employer && <div>{formData.employer}</div>}
+              </div>
+              <div>
+                {formData.startDate && (
+                  <div>
+                    {formData.endDate
+                      ? formData.startDate + " to " + formData.endDate
+                      : formData.startDate + " "}
+                  </div>
+                )}
+                {formData.cityOfWork ? formData.cityOfWork : ""}
+                {formData.countyOfWork ? ", " + formData.countyOfWork : ""}
+              </div>
             </div>
-            <div>
-              {formData.startDate && (
-                <div>
-                  {formData.endDate
-                    ? formData.startDate + " to " + formData.endDate
-                    : formData.startDate + " "}
-                </div>
-              )}
-              {formData.cityOfWork ? formData.cityOfWork : ""}
-              {formData.countyOfWork ? ", " + formData.countyOfWork : ""}
+            <div id="lower-exp-section">
+              <ul id="bullet-points">
+                {formData.bulletPoints &&
+                  formData.bulletPoints.map((point, index) => (
+                    <li key={index}>{point}</li>
+                  ))}
+              </ul>
             </div>
           </div>
           <h6 id="skills-A4" className="h6-info">
