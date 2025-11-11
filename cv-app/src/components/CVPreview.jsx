@@ -24,14 +24,14 @@ function CVPreview({ formData }) {
           <div id="experience-section">
             <div>
               {formData.jobTitle && <div>{formData.jobTitle}</div>}
-              {formData.empoyer && <div>{formData.empoyer}</div>}
+              {formData.employer && <div>{formData.employer}</div>}
             </div>
             <div>
               {formData.startDate && (
                 <div>
                   {formData.endDate
                     ? formData.startDate + " to " + formData.endDate
-                    : formData.startDate + " to current"}
+                    : formData.startDate + " "}
                 </div>
               )}
               {formData.cityOfWork ? formData.cityOfWork : ""}

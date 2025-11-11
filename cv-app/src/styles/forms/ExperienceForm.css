@@ -17,7 +17,7 @@
   align-items: flex-start;
 }
 
-#job-title-and-empoyer,
+#job-title-and-employer,
 #start-date-and-end-date,
 #city-and-county {
   display: flex;
@@ -25,7 +25,7 @@
   gap: 106px;
 }
 
-#checkboxDiv {
+#checkBoxDiv {
   position: relative;
   display: flex;
   flex-direction: row;

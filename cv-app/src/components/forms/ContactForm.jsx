@@ -1,4 +1,6 @@
-function ContactForm({ setFormData }) {
+import { useImperativeHandle } from "react";
+
+function ContactForm({ contactFormRef, formData, setFormData }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -6,9 +8,35 @@ function ContactForm({ setFormData }) {
       [name]: value,
     }));
   };
+
+  const handleSubmit = () => {
+    if (!formData.firstName || !formData.surname) {
+      alert("Please fill in your first name and surname.");
+      return false;
+    }
+    if (!formData.city) {
+      alert("Please fill in your city.");
+      return false;
+    }
+    if (!formData.countyRegion || !formData.postCode) {
+      alert("Please fill in your county/region and postcode.");
+      return false;
+    }
+    if (!formData.phone || !formData.email) {
+      alert("Please fill in your phone and email.");
+      return false;
+    }
+    console.log("Contact form submitted");
+    return true;
+  };
+
+  useImperativeHandle(contactFormRef, () => ({
+    submit: handleSubmit,
+  }));
+
   return (
     <>
-      <form id="contact-form">
+      <form id="contact-form" ref={contactFormRef} onSubmit={handleSubmit}>
         <div id="first-name-and-surname">
           <div className="contact-form">
             <label htmlFor="firstName">First name</label>
@@ -17,6 +45,7 @@ function ContactForm({ setFormData }) {
               name="firstName"
               id="firstName"
               required
+              value={formData.firstName}
               onChange={handleChange}
             />
           </div>
@@ -27,6 +56,7 @@ function ContactForm({ setFormData }) {
               name="surname"
               id="surname"
               required
+              value={formData.surname}
               onChange={handleChange}
             />
           </div>
@@ -38,6 +68,7 @@ function ContactForm({ setFormData }) {
             name="city"
             id="city"
             required
+            value={formData.city}
             onChange={handleChange}
           />
         </div>
@@ -49,6 +80,7 @@ function ContactForm({ setFormData }) {
               name="countyRegion"
               id="countyRegion"
               required
+              value={formData.countyRegion}
               onChange={handleChange}
             />
           </div>
@@ -59,6 +91,7 @@ function ContactForm({ setFormData }) {
               name="postCode"
               id="postCode"
               required
+              value={formData.postCode}
               onChange={handleChange}
             />
           </div>
@@ -71,6 +104,7 @@ function ContactForm({ setFormData }) {
               name="phone"
               id="phone"
               required
+              value={formData.phone}
               onChange={handleChange}
             />
           </div>
@@ -81,6 +115,7 @@ function ContactForm({ setFormData }) {
               name="email"
               id="email"
               required
+              value={formData.email}
               onChange={handleChange}
             />
           </div>

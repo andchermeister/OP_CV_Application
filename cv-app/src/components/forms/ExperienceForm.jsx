@@ -1,4 +1,8 @@
-function ExperienceForm({ setFormData }) {
+import { useState, useImperativeHandle, useEffect } from "react";
+
+function ExperienceForm({ experienceFormRef, formData, setFormData }) {
+  const [isCurrent, setIsCurrent] = useState(formData.currentCheckbox || false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -6,10 +10,51 @@ function ExperienceForm({ setFormData }) {
       [name]: value,
     }));
   };
+
+  const handleCheckBoxChange = (e) => {
+    const checked = e.target.checked;
+    setIsCurrent(checked);
+
+    setFormData((prev) => ({
+      ...prev,
+      currentCheckbox: checked,
+      endDate: checked ? "current" : prev.endDate || "",
+    }));
+  };
+
+  const handleSubmit = () => {
+    if (!formData.jobTitle || !formData.employer) {
+      alert("Please fill in your job title and employer");
+      return false;
+    }
+    if (!formData.startDate) {
+      alert("Please set your start date.");
+      return false;
+    }
+    if (!formData.endDate && !isCurrent) {
+      alert("Please set the end date or current checkmark.");
+      return false;
+    }
+    console.log("Experience form submitted");
+    return true;
+  };
+
+  useImperativeHandle(experienceFormRef, () => ({
+    submit: handleSubmit,
+  }));
+
+  useEffect(() => {
+    setIsCurrent(Boolean(formData.currentCheckbox));
+  }, [formData.currentCheckbox]);
+
   return (
     <>
-      <form id="experience-form">
-        <div id="job-title-and-empoyer">
+      <form
+        id="experience-form"
+        ref={experienceFormRef}
+        onSubmit={handleSubmit}
+      >
+        <div id="job-title-and-employer">
           <div className="experience-form">
             <label htmlFor="jobTitle">Job title</label>
             <input
@@ -17,16 +62,18 @@ function ExperienceForm({ setFormData }) {
               name="jobTitle"
               id="jobTitle"
               required
+              value={formData.jobTitle}
               onChange={handleChange}
             />
           </div>
           <div className="experience-form">
-            <label htmlFor="empoyer">Employer</label>
+            <label htmlFor="employer">Employer</label>
             <input
               type="text"
-              name="empoyer"
-              id="empoyer"
+              name="employer"
+              id="employer"
               required
+              value={formData.employer}
               onChange={handleChange}
             />
           </div>
@@ -35,26 +82,34 @@ function ExperienceForm({ setFormData }) {
           <div className="experience-form">
             <label htmlFor="startDate">Start date</label>
             <input
-              type="date"
+              type="month"
               name="startDate"
               id="startDate"
               required
+              value={formData.startDate}
               onChange={handleChange}
             />
           </div>
           <div className="experience-form">
             <label htmlFor="endDate">End date</label>
             <input
-              type="date"
+              type="month"
               name="endDate"
               id="endDate"
-              required
+              disabled={isCurrent}
+              value={formData.endDate}
               onChange={handleChange}
             />
           </div>
         </div>
-        <div id="checkboxDiv" className="experience-form">
-          <input type="checkbox" name="currentCheckbox" id="currentCheckbox" />
+        <div id="checkBoxDiv" className="experience-form">
+          <input
+            type="checkbox"
+            name="currentCheckbox"
+            id="currentCheckbox"
+            checked={isCurrent}
+            onChange={handleCheckBoxChange}
+          />
           <label htmlFor="currentCheckbox">I currently work here </label>
         </div>
         <div id="city-and-county">
@@ -64,6 +119,7 @@ function ExperienceForm({ setFormData }) {
               type="text"
               name="cityOfWork"
               id="cityOfWork"
+              value={formData.cityOfWork}
               onChange={handleChange}
             />
           </div>
@@ -73,6 +129,7 @@ function ExperienceForm({ setFormData }) {
               type="text"
               name="countyOfWork"
               id="countyOfWork"
+              value={formData.countyOfWork}
               onChange={handleChange}
             />
           </div>

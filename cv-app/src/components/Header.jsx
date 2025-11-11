@@ -1,4 +1,4 @@
-function Header({ page }) {
+function Header({ page, formData }) {
   const getTitleNSubTitle = () => {
     switch (page) {
       case "contact":
@@ -12,7 +12,11 @@ function Header({ page }) {
           "Start with your most recent job first. You can also add voluntary work, internships or extracurricular activities",
         ];
       case "roleDescription":
-        return ["Tell us what you did as a bartender"];
+        return [
+          `Tell us what you did as a ${
+            formData.jobTitle || `"your job title"`
+          }`,
+        ];
       case "workHistory":
         return ["Review your work history"];
       case "education":
@@ -34,7 +38,12 @@ function Header({ page }) {
   const titleNSubTitle = getTitleNSubTitle();
   const isArray = Array.isArray(titleNSubTitle);
 
-  const keywords = ["contact", "information", "experience", "bartender"];
+  const keywords = [
+    "contact",
+    "information",
+    "experience",
+    formData.jobTitle || "job title",
+  ];
 
   const renderTitle = (title) => {
     return title.split(" ").map((word, idx) =>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 import "./styles/CVPreview.css";
 import "./styles/Header.css";
@@ -15,6 +15,9 @@ import Buttons from "./components/Buttons.jsx";
 import CVPreview from "./components/CVPreview.jsx";
 
 function App() {
+  const contactFormRef = useRef(null);
+  const experienceFormRef = useRef(null);
+
   const pages = [
     "contact",
     "experience",
@@ -35,28 +38,50 @@ function App() {
     phone: "",
     email: "",
     jobTitle: "",
-    empoyer: "",
+    employer: "",
     startDate: "",
     endDate: "",
+    currentCheckbox: false,
     cityOfWork: "",
     countyOfWork: "",
   });
 
   const [pageIndex, setPageIndex] = useState(0);
   const [page, setPage] = useState(pages[0]);
+
   return (
     <div className="App">
       <div>
-        <Header page={page} />
-        {page === "contact" && <ContactForm setFormData={setFormData} />}
-        {page === "experience" && <ExperienceForm setFormData={setFormData} />}
-        {page === "roleDescription" && <RoleDescriptionForm />}
+        <Header page={page} formData={formData} />
+        {page === "contact" && (
+          <ContactForm
+            contactFormRef={contactFormRef}
+            formData={formData}
+            setFormData={setFormData}
+          />
+        )}
+        {page === "experience" && (
+          <ExperienceForm
+            experienceFormRef={experienceFormRef}
+            formData={formData}
+            setFormData={setFormData}
+          />
+        )}
+        {page === "roleDescription" && (
+          <RoleDescriptionForm
+            pages={pages}
+            setPage={setPage}
+            setPageIndex={setPageIndex}
+          />
+        )}
         <Buttons
           pageIndex={pageIndex}
           page={page}
           pages={pages}
           setPage={setPage}
           setPageIndex={setPageIndex}
+          contactFormRef={contactFormRef}
+          experienceFormRef={experienceFormRef}
         />
       </div>
       <CVPreview formData={formData} />
