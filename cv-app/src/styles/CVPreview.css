@@ -82,6 +82,33 @@
   flex-direction: row;
 }
 
-li {
-  font-size: 12px;
+#bullet-li,
+#skill-li {
+  font-size: 15px;
+}
+
+#education-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+#qulification-and-field-of-study {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#bullet-points,
+#skill-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  column-gap: 200px;
+}
+
+#summary-section {
+  width: 300px;
+  height: 100px;
 }

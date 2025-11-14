@@ -18,7 +18,7 @@ function ExperienceForm({ experienceFormRef, formData, setFormData }) {
     setFormData((prev) => ({
       ...prev,
       currentCheckbox: checked,
-      endDate: checked ? "current" : "",
+      endDate: checked ? "" : prev.endDate,
     }));
   };
 

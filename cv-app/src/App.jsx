@@ -6,6 +6,8 @@ import "./styles/forms/ContactForm.css";
 import "./styles/forms/ExperienceForm.css";
 import "./styles/forms/RoleDescriptionForm.css";
 import "./styles/forms/EducationForm.css";
+import "./styles/forms/SkillsForm.css";
+import "./styles/forms/SummaryForm.css";
 import "./styles/Buttons.css";
 import "./components/Header.jsx";
 import Header from "./components/Header.jsx";
@@ -13,6 +15,8 @@ import ContactForm from "./components/forms/ContactForm.jsx";
 import ExperienceForm from "./components/forms/ExperienceForm.jsx";
 import RoleDescriptionForm from "./components/forms/RoleDescriptionForm.jsx";
 import EducationForm from "./components/forms/EducationForm.jsx";
+import SkillsForm from "./components/forms/SkillsForm.jsx";
+import SummaryForm from "./components/forms/SummaryForm.jsx";
 import Buttons from "./components/Buttons.jsx";
 import CVPreview from "./components/CVPreview.jsx";
 
@@ -49,12 +53,14 @@ function App() {
     institution: "",
     cityOfInstitution: "",
     fieldOfStudy: "",
-    qualification: "High School Diploma",
+    qualification: "",
     startYear: "",
     graduationYear: "",
     eduCheckBox: false,
     grade: "",
     honours: "",
+    skillPoints: [""],
+    summary: "",
   });
 
   const [pageIndex, setPageIndex] = useState(0);
@@ -93,6 +99,12 @@ function App() {
             formData={formData}
             setFormData={setFormData}
           />
+        )}
+        {page === "skills" && (
+          <SkillsForm formData={formData} setFormData={setFormData} />
+        )}
+        {page === "summary" && (
+          <SummaryForm formData={formData} setFormData={setFormData} />
         )}
         <Buttons
           pageIndex={pageIndex}

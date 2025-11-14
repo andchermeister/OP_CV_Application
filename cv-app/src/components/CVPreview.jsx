@@ -17,6 +17,7 @@ function CVPreview({ formData }) {
             Summary
           </h6>
           <div className="separator-A4"></div>
+          <div id="summary-section">{formData.summary || ""}</div>
           <h6 id="exp-A4" className="h6-info">
             Experience
           </h6>
@@ -30,9 +31,10 @@ function CVPreview({ formData }) {
               <div>
                 {formData.startDate && (
                   <div>
-                    {formData.endDate
-                      ? formData.startDate + " to " + formData.endDate
-                      : formData.startDate + " "}
+                    {formData.startDate} to{" "}
+                    {formData.currentCheckbox
+                      ? "Current"
+                      : formData.endDate || ""}
                   </div>
                 )}
                 {formData.cityOfWork ? formData.cityOfWork : ""}
@@ -42,9 +44,13 @@ function CVPreview({ formData }) {
             <div id="lower-exp-section">
               <ul id="bullet-points">
                 {formData.bulletPoints &&
-                  formData.bulletPoints.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
+                  formData.bulletPoints
+                    .filter((point) => point && point.trim() !== "")
+                    .map((point, index) => (
+                      <li id="bullet-li" key={index}>
+                        {point}
+                      </li>
+                    ))}
               </ul>
             </div>
           </div>
@@ -52,10 +58,56 @@ function CVPreview({ formData }) {
             Skills
           </h6>
           <div className="separator-A4"></div>
+          <div id="skills-section">
+            <ul id="skill-points">
+              {formData.skillPoints &&
+                formData.skillPoints
+                  .filter((skill) => skill && skill.trim() !== "")
+                  .map((skill, index) => (
+                    <li id="skill-li" key={index}>
+                      {skill}
+                    </li>
+                  ))}
+            </ul>
+          </div>
           <h6 id="edu-A4" className="h6-info">
             Education
           </h6>
           <div className="separator-A4"></div>
+          <div id="education-section">
+            <div id="quali-inst-grade-honours">
+              <div id="qulification-and-field-of-study">
+                {formData.qualification && formData.fieldOfStudy && (
+                  <div>
+                    {formData.qualification} of {formData.fieldOfStudy}
+                  </div>
+                )}
+              </div>
+              <div id="insitution">
+                {formData.institution && <div>{formData.institution}</div>}
+              </div>
+              <div id="grade-and-honours">
+                {formData.grade && formData.honours && (
+                  <div>
+                    {formData.grade} , {formData.honours}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div id="years-and-city-of-institution">
+              {formData.startYear && (
+                <div>
+                  {formData.startYear} to{" "}
+                  {formData.currentCheckbox
+                    ? "Current"
+                    : formData.graduationYear || ""}
+                </div>
+              )}
+              {formData.cityOfInstitution && (
+                <div>{formData.cityOfInstitution}</div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <button id="viewTemplateBtn">View template</button>

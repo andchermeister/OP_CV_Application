@@ -26,7 +26,7 @@ function RoleDescriptionForm({
   };
 
   const addBullet = () => {
-    if (bullets.length < 5) {
+    if (bullets.length < 4) {
       setBullets([...bullets, ""]);
     }
   };
@@ -59,7 +59,7 @@ function RoleDescriptionForm({
             {`${formData.cityOfWork ? formData.cityOfWork + ", " : ""} ${
               formData.countyOfWork ? formData.countyOfWork + ", " : ""
             } ${formData.startDate ? formData.startDate : ""} - ${
-              formData.endDate ? formData.endDate : ""
+              formData.currentCheckbox ? "Current" : formData.endDate || ""
             }`}
           </h3>
         </div>
@@ -88,7 +88,7 @@ function RoleDescriptionForm({
             </div>
           ))}
 
-          {bullets.length < 5 && (
+          {bullets.length < 4 && (
             <button type="button" onClick={addBullet} id="add-bullet-btn">
               + Add another bullet
             </button>

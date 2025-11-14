@@ -40,6 +40,8 @@ function Header({ page, formData }) {
     "experience",
     formData.jobTitle || "job title",
     "education",
+    "skills",
+    "summary",
   ];
 
   const renderTitle = (title) => {

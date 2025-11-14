@@ -19,8 +19,13 @@ function EducationForm({ educationFormRef, formData, setFormData }) {
       alert("Please fill in your field of study and qualification.");
       return false;
     }
-    if (!formData.startYear || !formData.graduationYear) {
-      alert("Please fill in your start year and your graduation year.");
+    if (!formData.startYear) {
+      alert("Please set your start year.");
+      return false;
+    }
+    if (!formData.graduationYear && !isCurrent) {
+      alert("Please set the graduation year or current checkmark.");
+      return false;
     }
     console.log("Education form submitted");
     return true;
@@ -37,7 +42,7 @@ function EducationForm({ educationFormRef, formData, setFormData }) {
     setFormData((prev) => ({
       ...prev,
       eduCheckBox: checked,
-      graduationYear: checked ? "current" : "",
+      graduationYear: checked ? "" : prev.endDate,
     }));
   };
 
@@ -89,12 +94,15 @@ function EducationForm({ educationFormRef, formData, setFormData }) {
               value={formData.qualification}
               onChange={handleChange}
             >
-              <option value="hsd">High School Diploma</option>
-              <option value="gsces">GSCEs</option>
-              <option value="a-levels">A-Levels</option>
-              <option value="bachelor">Bachelor's Degree</option>
-              <option value="master">Master's Degree</option>
-              <option value="doctor">Doctorate</option>
+              <option value="" disabled>
+                -- Select qualification --
+              </option>
+              <option value="HSD">High School Diploma</option>
+              <option value="GSCEs">GSCEs</option>
+              <option value="A-Levels">A-Levels</option>
+              <option value="Bachelor">Bachelor's Degree</option>
+              <option value="Master">Master's Degree</option>
+              <option value="Doctor">Doctorate</option>
             </select>
           </div>
         </div>
@@ -102,10 +110,12 @@ function EducationForm({ educationFormRef, formData, setFormData }) {
           <div className="education-form">
             <label htmlFor="startYear">Start year</label>
             <input
-              type="year"
+              type="number"
               name="startYear"
               id="startYear"
               required
+              min="1950"
+              max={new Date().getFullYear()}
               value={formData.startYear}
               onChange={handleChange}
             />
@@ -113,10 +123,12 @@ function EducationForm({ educationFormRef, formData, setFormData }) {
           <div className="education-form">
             <label htmlFor="graduationYear">Graduation year</label>
             <input
-              type="year"
+              type="number"
               name="graduationYear"
               id="graduationYear"
               required
+              min="1950"
+              max={new Date().getFullYear()}
               value={formData.graduationYear}
               onChange={handleChange}
             />

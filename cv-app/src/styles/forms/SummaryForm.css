@@ -1,0 +1,23 @@
+#summary-form {
+  position: relative;
+  gap: 20px;
+  left: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#summary {
+  width: 887px;
+  height: 500px;
+  border: 1px solid #4f4f4f;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  resize: none;
+
+  display: flex;
+  flex-direction: column;
+}

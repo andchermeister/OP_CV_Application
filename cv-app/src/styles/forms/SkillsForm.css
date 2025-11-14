@@ -1,0 +1,55 @@
+#skills-form {
+  position: relative;
+  gap: 20px;
+  left: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#skills-textbox {
+  width: 887px;
+  height: 500px;
+  border: 1px solid #4f4f4f;
+  border-radius: 10px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-input {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.skill-input textarea {
+  flex: 1;
+  resize: none;
+  padding: 5px;
+  color: #4f4f4f;
+  font-size: 15px;
+}
+
+#add-skill-btn,
+#remove-skill-btn {
+  width: 180px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 30px;
+  margin-top: 5px;
+  background-color: white;
+}
+
+#add-skill-btn {
+  width: 180px;
+}
+
+#remove-skill-btn {
+  width: 80px;
+}
