@@ -27,6 +27,10 @@ function EducationForm({ educationFormRef, formData, setFormData }) {
       alert("Please set the graduation year or current checkmark.");
       return false;
     }
+    if (!isCurrent && formData.startYear > formData.graduationYear) {
+      alert("Start year can not be later than graduation year.");
+      return false;
+    }
     console.log("Education form submitted");
     return true;
   };

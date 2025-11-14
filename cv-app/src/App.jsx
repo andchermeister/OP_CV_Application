@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
 import "./styles/CVPreview.css";
 import "./styles/Header.css";
@@ -32,6 +33,7 @@ function App() {
     "education",
     "skills",
     "summary",
+    "template",
   ];
 
   const [formData, setFormData] = useState({
@@ -117,7 +119,14 @@ function App() {
           educationFormRef={educationFormRef}
         />
       </div>
-      <CVPreview formData={formData} />
+      <CVPreview
+        formData={formData}
+        page={page}
+        pageIndex={pageIndex}
+        pages={pages}
+        setPageIndex={setPageIndex}
+        setPage={setPage}
+      />
     </div>
   );
 }

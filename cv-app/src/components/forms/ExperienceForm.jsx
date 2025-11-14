@@ -35,6 +35,10 @@ function ExperienceForm({ experienceFormRef, formData, setFormData }) {
       alert("Please set the end date or current checkmark.");
       return false;
     }
+    if (!isCurrent && formData.startDate > formData.endDate) {
+      alert("Start date can not be later than end date.");
+      return false;
+    }
     console.log("Experience form submitted");
     return true;
   };

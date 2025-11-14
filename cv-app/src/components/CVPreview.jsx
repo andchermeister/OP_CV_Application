@@ -1,10 +1,54 @@
-function CVPreview({ formData }) {
+import { useRef } from "react";
+
+function CVPreview({
+  formData,
+  page,
+  pageIndex,
+  pages,
+  setPageIndex,
+  setPage,
+}) {
+  const prevPageIndexRef = useRef(null);
+
+  const viewTemplate = () => {
+    prevPageIndexRef.current = pageIndex;
+    setPageIndex(pages.length - 1);
+    setPage("template");
+  };
+
+  const previous = () => {
+    if (prevPageIndexRef.current !== null) {
+      const prevIndex = prevPageIndexRef.current;
+      setPageIndex(prevIndex);
+      setPage(pages[prevIndex]);
+      prevPageIndexRef.current = null;
+      return;
+    }
+    setPageIndex(pageIndex - 1);
+    setPage(pages[pageIndex - 1]);
+  };
+
+  const editPage = (pageName) => {
+    if (pages.includes(pageName)) {
+      setPageIndex(pages.indexOf(pageName));
+      setPage(pageName);
+    }
+  };
+
   return (
-    <section id="preview-section">
+    <section
+      id="preview-section"
+      className={page === "template" ? "full-preview" : ""}
+    >
       <div id="preview-A4">
-        <h1 id="first-name-surname-A4">
-          {formData.firstName || "FIRST NAME"} {formData.surname || "SURNAME"}
-        </h1>
+        <div className="flexbox-row">
+          <h1 id="first-name-surname-A4">
+            {formData.firstName || "FIRST NAME"} {formData.surname || "SURNAME"}
+          </h1>
+          <button className="edit-btns" onClick={() => editPage("contact")}>
+            <i className="fa-regular fa-pen-to-square"></i>
+          </button>
+        </div>
         <div className="separator-A4"></div>
         <div id="phone-number-email-A4">
           {formData.city ? formData.city + " " : "City"}
@@ -13,14 +57,27 @@ function CVPreview({ formData }) {
           {formData.email || "Email Address"}
         </div>
         <div id="h6-section">
-          <h6 id="summary-A4" className="h6-info">
-            Summary
-          </h6>
+          <div className="flexbox-row">
+            <h6 id="summary-A4" className="h6-info">
+              Summary
+            </h6>
+            <button className="edit-btns" onClick={() => editPage("summary")}>
+              <i className="fa-regular fa-pen-to-square"></i>
+            </button>
+          </div>
           <div className="separator-A4"></div>
           <div id="summary-section">{formData.summary || ""}</div>
-          <h6 id="exp-A4" className="h6-info">
-            Experience
-          </h6>
+          <div className="flexbox-row">
+            <h6 id="exp-A4" className="h6-info">
+              Experience
+            </h6>
+            <button
+              className="edit-btns"
+              onClick={() => editPage("experience")}
+            >
+              <i className="fa-regular fa-pen-to-square"></i>
+            </button>
+          </div>
           <div className="separator-A4"></div>
           <div id="experience-section">
             <div id="upper-exp-section">
@@ -54,9 +111,14 @@ function CVPreview({ formData }) {
               </ul>
             </div>
           </div>
-          <h6 id="skills-A4" className="h6-info">
-            Skills
-          </h6>
+          <div className="flexbox-row" onClick={() => editPage("skills")}>
+            <h6 id="skills-A4" className="h6-info">
+              Skills
+            </h6>
+            <button className="edit-btns">
+              <i className="fa-regular fa-pen-to-square"></i>
+            </button>
+          </div>
           <div className="separator-A4"></div>
           <div id="skills-section">
             <ul id="skill-points">
@@ -70,9 +132,14 @@ function CVPreview({ formData }) {
                   ))}
             </ul>
           </div>
-          <h6 id="edu-A4" className="h6-info">
-            Education
-          </h6>
+          <div className="flexbox-row" onClick={() => editPage("education")}>
+            <h6 id="edu-A4" className="h6-info">
+              Education
+            </h6>
+            <button className="edit-btns">
+              <i className="fa-regular fa-pen-to-square"></i>
+            </button>
+          </div>
           <div className="separator-A4"></div>
           <div id="education-section">
             <div id="quali-inst-grade-honours">
@@ -110,7 +177,12 @@ function CVPreview({ formData }) {
           </div>
         </div>
       </div>
-      <button id="viewTemplateBtn">View template</button>
+      <button
+        id="viewTemplateBtn"
+        onClick={page === "template" ? previous : viewTemplate}
+      >
+        {page === "template" ? "Back" : "View Template"}
+      </button>
     </section>
   );
 }
